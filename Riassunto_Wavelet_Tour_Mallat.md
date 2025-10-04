@@ -4,9 +4,9 @@
 
 ### Trasformata wavelet continua e discreta
 Le **wavelet** sono funzioni oscillanti a supporto tipicamente localizzato, utilizzate per rappresentare segnali con diverse risoluzioni tempo-frequenza. Una *trasformata wavelet continua* (Continuous Wavelet Transform, CWT) di un segnale $f(t)$ si definisce come l’insieme dei prodotti interni di $f$ con versioni traslate ($u$) e dilatate ($s$) di una *mother wavelet* $\psi$ avente media nulla. In formula:
-$$
-Wf(u,s) = \langle f, \psi_{u,s}\rangle = \int_{-\infty}^{+\infty} f(t)\,\frac{1}{\sqrt{s}}\,\psi^*\!\Big(\frac{t-u}{\,s\,}\Big)\,dt,
-$$
+
+\[Wf(u,s) = \langle f, \psi_{u,s}\rangle = \int_{-\infty}^{+\infty} f(t)\,\frac{1}{\sqrt{s}}\,\psi^*\!\Big(\frac{t-u}{\,s\,}\Big)\,dt,\]
+
 dove $\psi^*$ è il complesso coniugato di $\psi$. La condizione $\int_{-\infty}^{+\infty}\psi(t)\,dt = 0$ (media nulla) garantisce che $\psi$ rilevi variazioni locali di $f$ anziché la componente continua. La wavelet $\psi_{u,s}(t) = s^{-1/2}\psi((t-u)/s)$ è centrata in $t=u$ ed ha una *finestra temporale* di ampiezza proporzionale a $s$; contemporaneamente, la sua banda in frequenza si concentra attorno a frequenze alte per $s$ piccolo e a frequenze basse per $s$ grande. In altri termini, la risoluzione tempo-frequenza delle wavelet varia con la scala: a scale piccole (finestra stretta) le wavelet “zoomano” i dettagli temporali con scarsa risoluzione in frequenza, mentre a scale grandi forniscono buona risoluzione in frequenza ma meno dettaglio temporale. Questa variazione adattiva (a differenza della trasformata di Fourier finestrata a finestra fissa) rende le wavelet adatte ad analizzare sia transitori locali (breve durata, alta frequenza) sia componenti più stazionarie a bassa frequenza.
 
 La **trasformata wavelet discreta** (DWT) seleziona solo certi $s$ e $u$ in modo da ottenere una rappresentazione non ridondante: tipicamente scale diadiche $s=2^j$ e traslazioni $u=k2^j$ (per interi $j,k$). Esiste una condizione di *admissibilità* che assicura completezza e ricostruibilità della CWT; nel caso discreto diadico, sotto opportune ipotesi la famiglia $\{\psi_{j,k}(t) = 2^{-j/2}\psi(2^{-j}t - k)\}_{j,k\in\mathbb{Z}}$ forma una **base ortonormale** di $L^2(\mathbb{R})$. Con una funzione di *scaling* $\phi(t)$ che genera lo spazio di approssimazione a bassa risoluzione, si ha
